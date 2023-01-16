@@ -29,4 +29,18 @@ function yudl_barrio_bootstrap_sass_form_system_theme_settings_alter(&$form, For
     'bg-white' => t('White'),
     'bg-transparent' => t('Transparent'),
   );
+
+  
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter for blocks.
+ *
+function yudl_barrio_bootstrap_sass_theme_suggestions_block_alter(&$suggestions, $variables) {
+
+  // Load theme suggestions for blocks from parent theme.
+  foreach ($suggestions as &$suggestion) {
+    $suggestion = str_replace('yudl_barrio_subtheme_', 'yudl_barrio_bootstrap_sass_', $suggestion);
+  }
+}
+*/

@@ -3,7 +3,7 @@
 bootstrap_barrio_sass.settings:
   type: theme_settings
   label: 'Bootstrap Barrio settings'
-  mapping:
+  # mapping:
 
 # Library.
 # ----------------------------

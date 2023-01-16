@@ -38,5 +38,5 @@ regions:
 version: '5.0.6'
 project: 'yudl_barrio_bootstrap_sass'
 datestamp: 1660517237
-#logo: 'yorku-logo.jpg'
+logo: 'images/YorkULogo_DIGITAL_Hor_RGB-136x30.png'
 screenshot: YUDL-Theme-Screenshot.png
