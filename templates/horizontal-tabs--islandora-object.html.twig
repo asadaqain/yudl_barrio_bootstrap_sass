@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Default theme implementation for horizontal tabs.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The rendered children.
+ *
+ * @see template_preprocess_horizontal_tabs()
+ *
+ * @ingroup themeable
+ */
+#}
+<div data-horizontal-tabs class="mt-3 horizontal-tabs clearfix">
+  <ul data-horizontal-tabs-list class="horizontal-tabs-list visually-hidden"></ul>
+  <div data-horizontal-tabs-panes{{ attributes }}>{{ children }}</div>
+</div> 
+
+
+{#<div data-horizontal-tabs class="horizontal-tabs clearfix">
+  <ul data-horizontal-tabs-list class="nav nav-pills"></ul>
+  <div data-horizontal-tabs-panes class="nav-item" {{ attributes }}>{{ children }}</div>
+</div>
+
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+{{ node.field_my_title.value }}
+#}
