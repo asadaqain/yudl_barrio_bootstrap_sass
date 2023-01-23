@@ -6,3 +6,41 @@ $nav-link-hover-color: $primary-light;
 #navbar-main .navbar-nav li a {
     color: $white;
 }
+
+.yudl-card-primary {
+
+    // GENERAL
+    .views-label {
+        color: var(--bs-gray-600);
+        padding: 5px 10px;
+    }
+    
+    span.field-content, .field-content {
+        font-weight: $font-weight-bold;
+        padding: 5px 10px;
+    }
+
+    // TITLE
+    .views-field.views-field-title {
+        // background-color: lighten(map-get($theme-colors,"primary"), 25%);
+        // background-color: $primary-dark;
+        // color: map-get($theme-colors,"light");
+        // background-color: map-get($theme-colors, "primary" );
+        background-color: map-get($theme-colors, "light" );
+        padding: 2% 3% 2% 3%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+
+        a {
+            // color: $white;
+            color: map-get($theme-colors, "primary" );
+        }
+    }
+
+    // DESCRIPTION
+    .views-field.views-field-field-description {
+        .field-content {
+            p { font-weight: 500; }
+        }
+    }
+}

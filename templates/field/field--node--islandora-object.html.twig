@@ -48,7 +48,7 @@
 {# field__label  #}
 {%
   set title_classes = [
-    'text-muted', 
+    'text-muted fw-normal', 
     label_display == 'visually_hidden' ? 'visually-hidden',
   ]
 %}
@@ -59,7 +59,7 @@
     <ul{{ attributes.addClass(classes, 'list-group list-group-flush') }}>
       {% for item in items %}
       {# How to add DL list here? #}
-        <li{{ item.attributes.addClass('list-group-item fw-semibold') }}>{{ item.content }}</li>
+        <li{{ item.attributes.addClass('list-group-item fw-semibold') }}>{{ item.content }}ssssss</li>
       {% endfor %}
     </ul>
   {% else %}
@@ -67,49 +67,17 @@
       <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
     {% endfor %}
   {% endif %}
-{% else %}
   <div{{ attributes.addClass(classes) }}>
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    <dl>
+    <dt{{ title_attributes.addClass(title_classes) }}>{{ label }}</dt>
     {% if multiple %}
       {# <ul class='list-group'> #}
     {% endif %}
     {% for item in items %}
-      <ul class='list-group list-group-flush mb-0'>
-        <li{{ item.attributes.addClass('list-group-item fw-bolder') }}>{{ item.content }}</li>
-      </ul>
+        <dd{{ item.attributes.addClass('fw-bold ms-3') }}>  {{ item.content }}</dd>
     {% endfor %}
     {% if multiple %}
       {# </ul> #}
     {% endif %}
   </div>
 {% endif %}
-
-{# <p>============ ORIGINAL ===================</p>
-
-
-{% if label_hidden %}
-  {% if multiple %}
-    <div{{ attributes.addClass(classes, 'field__items') }}>
-      {% for item in items %}
-        <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
-      {% endfor %}
-    </div>
-  {% else %}
-    {% for item in items %}
-      <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
-    {% endfor %}
-  {% endif %}
-{% else %}
-  <div{{ attributes.addClass(classes) }}>
-    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
-    {% if multiple %}
-      <div class='field__items'>
-    {% endif %}
-    {% for item in items %}
-      <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
-    {% endfor %}
-    {% if multiple %}
-      </div>
-    {% endif %}
-  </div>
-{% endif %} #}

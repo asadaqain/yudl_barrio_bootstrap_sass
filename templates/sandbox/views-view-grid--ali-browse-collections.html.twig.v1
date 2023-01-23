@@ -1,0 +1,207 @@
+{#
+/**
+ * @file
+ * Theme override for views to display rows in a grid.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapping element.
+ * - title: The title of this group of rows.
+ * - view: The view object.
+ * - rows: The rendered view results.
+ * - options: The view plugin style options.
+ *   - row_class_default: A flag indicating whether default classes should be
+ *     used on rows.
+ *   - col_class_default: A flag indicating whether default classes should be
+ *     used on columns.
+ * - items: A list of grid items. Each item contains a list of rows or columns.
+ *   The order in what comes first (row or column) depends on which alignment
+ *   type is chosen (horizontal or vertical).
+ *   - attributes: HTML attributes for each row or column.
+ *   - content: A list of columns or rows. Each row or column contains:
+ *     - attributes: HTML attributes for each row or column.
+ *     - content: The row or column contents.
+ *
+ * @see template_preprocess_views_view_grid()
+ */
+#}
+
+{%
+  set classes = [
+    'views-view-grid',
+    options.alignment,
+    'cols-' ~ options.columns,
+    'clearfix',
+    'col',
+  ]
+%}
+{% if options.row_class_default %}
+{# views-row #}
+
+  {%
+    set row_classes = [
+      'row',
+      options.alignment == 'horizontal' ? 'clearfix',
+    ]
+  %}
+{% endif %}
+{% if options.col_class_default %}
+  {# views-col col #}
+  {%
+    set col_classes = [
+      '',
+      options.alignment == 'vertical' ? 'clearfix',
+    ]
+  %}
+{% endif %}
+{# <div{{ attributes.addClass(classes) }}> #}
+{# <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          Jetsons Collection
+          Repository Item
+          2023-01-17 Date:
+          view
+          Collection
+          On 
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          Simpsons Collection 2023
+          Repository Item
+          2023-01-16 Date: 2023-01-06
+
+          Collection of Simpson Images
+          view
+          Collection
+          On 
+        </div>
+      </div>
+    </div>
+  </div>
+</div> #}
+{% if title %}
+  {# <div class="container mufasa"> #}
+    {# <div class="row mb-3"> #}
+      {% for row in items %}
+          <p>items in row = {{ items|length }} of which row is {{ row|length }} LOOP # {{loop.index}}</p>
+          {% set col_md_size = "col-md-#{12 / options.columns}" %}
+          {% set col_sm_size = 12 %}
+
+          <div{{ row.attributes.addClass("", options.row_class_default ? 'row-' ~ loop.index) }}>
+            {% for column in row.content %}
+              <div{{ column.attributes.addClass(col_md_size) }}>
+              
+                <div class="card">
+                  {# <img src="..." class="card-img-top" alt="..."> #}
+                  {% if title %}
+                    <h3 class="card-title bg-light p-3">{{ title }}</h3>
+                  {% endif %}
+                  {% if column.content.title %}
+                    <h3 class="card-title bg-light p-3">{{ column.title.content }}</h3>
+                  {% endif %}
+                  <div class="card-body">
+                  <p>I am in COL-{{ col_md_size }} Loop: {{ loop.index}} </p>
+                    {{ dump(column.content) }}
+                    =======================
+                    {{ column.content }}
+                  </div>
+                </div> {# card close #}
+              </div> {# col close #}
+            {% endfor %} {# col-loop #}
+          </div>
+        {% endfor %} {# row-loop #}
+    {# </div> #}
+  {# </div> #}
+{% else %}
+
+<div class="container">
+
+  {% if options.alignment == 'horizontal' %}
+  <p>START: items in row = {{ items|length }} of which row is {{ row|length }} LOOP # {{loop.index}}</p>
+    {% for row in items %}
+    <p>LOOP: items in row = {{ items|length }} of which row is {{ row|length }} LOOP # {{loop.index}}</p>
+      {# <p>items in row = {{ items|length }} of which row is {{ row|length }}</p> #}
+      <p>CONTENT SIZE: {{row.content|length}}
+      {% set col_md_size = "col-md-#{12 / row.content|length}" %}
+      {% set col_sm_size = 12 %}
+      <div{{ row.attributes.addClass("row mb-3", options.row_class_default ? 'row-' ~ loop.index) }}>
+       {# <p>IAM A ROW {{ loop.index }}</p> #}
+        {% for column in row.content %}
+          <div{{ column.attributes.addClass(col_md_size) }}>
+          {# class=\"{{% col_size %}}\" #}
+            <div class="card yudl-card-primary">
+              <div class="card-body">
+                {{ column.content }}
+              </div>
+            </div> {# card close #}
+          </div> {# col close #}
+        {% endfor %} {# col-loop #}
+      </div>
+    {% endfor %} {# row-loop #}
+  {% else %}
+    {% for column in items %}
+      <div{{ column.attributes.addClass(col_classes, options.col_class_default ? 'col-' ~ loop.index) }}>
+        {% for row in column.content %}
+          <div{{ row.attributes.addClass(row_classes, options.row_class_default ? 'row-' ~ loop.index) }}>
+            {{ row.content }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+{# <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ title }}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div> #}
+
+<p>++++++++++ ORIGINAL ++++++++++++++++</p>
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+<div{{ attributes.addClass(classes) }}>
+  {% if options.alignment == 'horizontal' %}
+    {% for row in items %}
+      <div{{ row.attributes.addClass(row_classes, options.row_class_default ? 'row-' ~ loop.index) }}>
+       <p>IAM A ROW</p>
+        {% for column in row.content %}
+        <p>I AM IN Column</p>
+          <div{{ column.attributes.addClass(col_classes, options.col_class_default ? 'col-' ~ loop.index) }}>
+            {{ column.content }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% else %}
+    {% for column in items %}
+      <div{{ column.attributes.addClass(col_classes, options.col_class_default ? 'col-' ~ loop.index) }}>
+        {% for row in column.content %}
+          <div{{ row.attributes.addClass(row_classes, options.row_class_default ? 'row-' ~ loop.index) }}>
+            {{ row.content }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+
+{% endif %}

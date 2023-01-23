@@ -1,5 +1,6 @@
+# Child theme of Bootstrap 4/5 - Barrio SASS Starter Kit
 
-# Setup
+## Setup
 
 ```
 cd to theme directory
@@ -11,5 +12,14 @@ gulp OR gulp styles
 
 ```
 
+## Navbar Setup
+1. Appearance -> Settings -> YUDL Theme Name
+2. Components -> Navbar Structure -> 
+    * Navbar Width Container => Checked
+    * Navbar Top Link => Light
+    * Navbar Top background color => White
+    * Navbar link color => Dark
+    * Navbar background color = Primary 
+    
 
-Child theme of Bootstrap 4/5 - Barrio SASS Starter Kit
+
