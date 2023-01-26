@@ -44,3 +44,140 @@ $nav-link-hover-color: $primary-light;
         }
     }
 }
+
+.featured-card  {
+
+    // text-align: center;
+
+    a {
+        color: map-get($theme-colors, "primary" );
+        font-size: 1.6rem;
+    }
+}
+
+.block-views-exposed-filter-blocksolr-search-content-page-1 {
+// #block-yudl-barrio-bootstrap-sass-exposedformsolr-search-contentpage-1 {
+    // background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
+    background-image: url('https://www.library.yorku.ca/web/wp-content/uploads/2021/05/library_atrium3-resized.jpg');
+    .content { 
+        padding-top: 2%; 
+        text-align: center;
+    }
+    form {
+        display: inline-block;
+    }
+
+}
+/*<!-- Hero -->
+<div class="p-5 text-center bg-image rounded-3" style="
+    background-image: url('https://www.library.yorku.ca/web/wp-content/uploads/2021/05/library_atrium3-resized.jpg');
+    height: 200px;
+  ">
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <!-- PUT SOLR FORM HERE -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Hero -->
+
+item-list
+views_block__featured_collections_block_block_1
+*/
+
+
+
+.yul-info-card-container {
+    margin: 0 auto;
+    padding: 0.5em 0;
+    /*
+    background-color: rgb(0, 0, 0);
+    background-color: #fff;
+    */
+    display: flex;
+    flex-flow: wrap;
+  }
+  .yul-info-card,
+  .info-card {
+    width: 100%;
+    flex: 1 0 96%;
+    margin-bottom: 0.5rem;
+    margin: 0.5em auto;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    overflow: hidden;
+  }
+  .yul-info-card figure, .yul-info-card img {
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    border: 8px solid #fff;
+  }
+  .yul-info-card figure img, .yul-info-card img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    -webkit-transition: 15s ease;
+    -moz-transition: 15s ease;
+    -o-transition: 15s ease;
+    transform: 15s ease;
+  }
+  .yul-info-card figure img:hover,
+  .yul-info-card figure img:focus,
+  .yul-info-card img:hover,
+  .yul-info-card img:focus {
+    -ms-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  /* Add this class to group of the card body */
+  .yul-info-card-body {
+    padding: 1rem;
+  }
+  .yul-info-card-body h2,
+  .yul-info-card-body h3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  @media only screen and (min-width: 600px) {
+    .yul-info-card,
+    .info-title-card {
+      flex: 1 0 48%;
+    }
+  }
+  @media only screen and (device-width: 768px) {
+    /* For general iPad layouts */
+    /* Do not expand to full width if last of third */
+    .yul-info-card:nth-child(3):last-child {
+      flex-grow: 0;
+    }
+  }
+  /* Anything larger than Ipad */
+  @media (min-width: 769px) {
+    /* 2 Cards */
+    .yul-info-card:nth-child(1):nth-last-child(2),
+    .yul-info-card:nth-child(2):nth-last-child(1) {
+      flex: 1 0 48%;
+    }
+    /* 3 Cards */
+    .yul-info-card:nth-child(1):nth-last-child(3),
+    .yul-info-card:nth-child(2):nth-last-child(2),
+    .yul-info-card:nth-child(3):nth-last-child(1) {
+      flex: 1 0 30%;
+    }
+    /* 4 Cards */
+    .yul-info-card:nth-child(1):nth-last-child(4),
+    .yul-info-card:nth-child(2):nth-last-child(3),
+    .yul-info-card:nth-child(3):nth-last-child(2),
+    .yul-info-card:nth-child(4):nth-last-child(1) {
+      flex: 1 0 20%;
+    }
+  }

@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * Theme override for views to display rows in a grid.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapping element.
+ * - title: The title of this group of rows.
+ * - view: The view object.
+ * - rows: The rendered view results.
+ * - options: The view plugin style options.
+ *   - row_class_default: A flag indicating whether default classes should be
+ *     used on rows.
+ *   - col_class_default: A flag indicating whether default classes should be
+ *     used on columns.
+ * - items: A list of grid items. Each item contains a list of rows or columns.
+ *   The order in what comes first (row or column) depends on which alignment
+ *   type is chosen (horizontal or vertical).
+ *   - attributes: HTML attributes for each row or column.
+ *   - content: A list of columns or rows. Each row or column contains:
+ *     - attributes: HTML attributes for each row or column.
+ *     - content: The row or column contents.
+ *
+ * @see template_preprocess_views_view_grid()
+ */
+#}
+{%
+  set classes = [
+    'views-view-grid',
+    options.alignment,
+    'cols-' ~ options.columns,
+    'clearfix',
+    'col',
+  ]
+%}
+{% if options.row_class_default %}
+{# 'views-row', #}
+  {%
+    set row_classes = [
+      'row mb-3 mufasa',
+      options.alignment == 'horizontal' ? 'clearfix',
+    ]
+  %}
+{% endif %}
+{% if options.col_class_default %}
+  {%
+    set col_classes = [
+      'views-col card',
+      options.alignment == 'vertical' ? 'clearfix',
+    ]
+  %}
+{% endif %}
+{% if title %}
+  <h3 class="bg-secondary" style="background-color:aquamarine;">{{ title }}</h3>
+{% endif %}
+
+{# /* YUDL CUSTOM */ #}
+<div class="container">
+{# <div{{ attributes.addClass(classes) }}> #}
+    {# Rows #}
+    {% for row in items %}
+    {# <p>LOOP: items in row = {{ row.content|length }} of which row is {{ row|length }} LOOP # {{loop.index}}</p> #}
+      {% set col_md_size = "col-md-#{12 / row.content|length}" %}
+      {% set col_sm_size = "col-sm-12" %}
+      {# Columns #}
+      <div{{ row.attributes.addClass('row mb-3', options.row_class_default ? 'row-' ~ loop.index) }}>
+        {% for column in row.content %}
+          <div{{ column.attributes.addClass(col_md_size, col_sm_size) }}>
+                  {{ column.content }}
+          </div> {# col close #}
+        {% endfor %} {# col-loop #}
+      </div>
+    {% endfor %} {# row-loop #}
+</div>
+{# /* END OF YUDL CUSTOM */ #}

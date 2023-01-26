@@ -57,8 +57,9 @@ $enable-gradients: false;
 // #f6f6f2
 
 .sidebar .block {
-  background-color: #f6f6f2;
-  border-color: #f9f9f9;
+  background-color: map-get($theme-colors, "light" ); //#f6f6f2;
+  // border-color: #f9f9f9;
+  h2 { border-bottom: none; }
 }
 
 $nav-tabs-link-active-color: #fff;
