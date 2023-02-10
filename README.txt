@@ -23,3 +23,8 @@ gulp OR gulp styles
     
 
 
+## Notes
+* new template: `` views-view-fields--VIEW-NAME.html.twig
+
+* access your fields values: `` {{ fields.field_NAME.content }}
+* https://drupal.stackexchange.com/questions/208201/how-to-get-each-field-value-in-views-views-unformatted-view-machine-name-html-t
